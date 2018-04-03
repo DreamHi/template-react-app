@@ -1,6 +1,6 @@
 {
   "name": "template-react-app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "基于React的单页面应用模版",
   "main": "index.js",
   "scripts": {

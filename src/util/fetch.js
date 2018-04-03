@@ -4,7 +4,7 @@ import { ROUTE_LOGIN } from './constants';
 import storage from './storage';
 
 const history = createHistory({forceRefresh: true});
-fetch.defaults.baseURL = `${process.env.API_URL}/template`;
+fetch.defaults.baseURL = `${process.env.API_URL}`;
 
 function setHeaderToken() {
   const token = storage.getToken();
