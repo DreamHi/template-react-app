@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import SLogin from './modules/system/scenes/SLogin';
 import SHome  from './modules/system/scenes/SHome';
 import SNotFound  from './modules/system/scenes/SNotFound';
 
 import storage from './util/storage';
 import { ROUTE_HOME, ROUTE_LOGIN } from "./util/constants";
+
+import 'antd/dist/antd.css';
 
 const rootElement = document.getElementById('root');
 
@@ -34,10 +36,12 @@ const PublicRoute = ({component: Component, ...rest}) => {
 
 ReactDOM.render(
   <Router>
-    <PublicRoute path='/' component={SLogin} />
-    <PublicRoute path={ ROUTE_LOGIN } component={SLogin} />
-    <PrivateRoute path={ ROUTE_HOME } component={SHome} />
-    <Route path="*" component={SNotFound} />
+    <Switch>
+      <PublicRoute path='/' exact component={SLogin} />
+      <PublicRoute path={ ROUTE_LOGIN } component={SLogin} />
+      <PrivateRoute path={ ROUTE_HOME } component={SHome} />
+      <Route path="*" component={SNotFound} />
+    </Switch>
   </Router>,
   rootElement,
 );

@@ -1,9 +1,10 @@
 import fetch from 'axios';
-import { Redirect } from 'react-router-dom';
+import createHistory from "history/createBrowserHistory";
 import { ROUTE_LOGIN } from './constants';
 import storage from './storage';
 
-fetch.defaults.baseURL = `${process.env.HOST_URL}/templates`;
+const history = createHistory({forceRefresh: true});
+fetch.defaults.baseURL = `${process.env.API_URL}/template`;
 
 function setHeaderToken() {
   const token = storage.getToken();
@@ -14,7 +15,7 @@ function checkAuth(err, callback) {
   console.log(err);
   if (err.response.data.errorCode === 401) {
     storage.removeAuthenticateUser();
-    Redirect.to(ROUTE_LOGIN);
+    history.push(ROUTE_LOGIN);
   }
   callback(err.response.data, undefined);
 }

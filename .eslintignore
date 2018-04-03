@@ -1,0 +1,8 @@
+scripts
+node_modules
+coverage
+docs
+dist
+lib
+webpack.config.dev.js
+webpack.config.prod.js

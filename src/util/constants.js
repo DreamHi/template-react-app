@@ -4,4 +4,5 @@ export const ROUTE_HOME = '/home';
 
 
 
-// rest api
+// api list
+export const API_LOGIN = '/login';
