@@ -76,7 +76,12 @@ module.exports = {
           toplevel: false,
         }
       })
-    ]
+    ],
+    namedModules: true, // NamedModulesPlugin()
+    splitChunks: { // CommonsChunkPlugin()
+      name: 'vendor',
+      minChunks: Infinity
+    },
   },
 
   plugins: [

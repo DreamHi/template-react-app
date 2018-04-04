@@ -86,4 +86,12 @@ module.exports = {
       favicon: './src/static/img/favicon.ico',
     }),
   ],
+
+  optimization: {
+    namedModules: true, // NamedModulesPlugin()
+    splitChunks: { // CommonsChunkPlugin()
+      name: 'vendor',
+      minChunks: Infinity
+    },
+  }
 };
