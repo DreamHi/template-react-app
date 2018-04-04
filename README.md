@@ -1,5 +1,5 @@
 # template-react-app
-基于React的单页面应用模版。此模版和[template-nodejs-app](https://github.com/DreamHi/template-nodejs-app)是配对使用的。
+基于React的单页面应用模版。此模版和[template-nodejs-app](https://github.com/DreamHi/template-nodejs-app)配对使用。
 
 ## 环境要求
 
