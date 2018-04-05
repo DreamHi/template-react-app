@@ -21,7 +21,7 @@ npm run build 打包模式
 3.1 给项目起名  
 3.2 修改package.json中和项目相关的属性  
 3.3 修改README.md内容  
-3.4 修改token属性名（x-token-template）
+3.4 修改util/fetch.js中的token名（x-token-template）
     ```js
     function setHeaderToken() {
       const token = storage.getToken();
