@@ -1,8 +1,7 @@
 import React from 'react';
-import createHistory from "history/createBrowserHistory";
+import createHistory from 'history/createBrowserHistory';
 import { Form, Icon, Input, Button, Checkbox, Modal } from 'antd';
-import '../../../static/css/login.css'
-
+import '../../../static/css/login.css';
 import { post } from '../../../util/fetch';
 import { API_LOGIN, ROUTE_HOME } from '../../../util/constants';
 import storage from '../../../util/storage';
@@ -26,17 +25,17 @@ class SLogin extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        post(API_LOGIN, values, (err, response) => {
-          if (err) {
+        post(API_LOGIN, values, (error, response) => {
+          if (error) {
             Modal.error({
-              title: 'ユーザ名またはパスワードが正しくありません。',
-              okText: 'はい',
+              title: '用户名或者密码不正确。',
+              okText: 'OK',
             });
           } else {
             if (response.user.valid === 0) {
               Modal.error({
-                title: 'ユーザが存在しない。',
-                okText: 'はい',
+                title: '用户名或者密码不正确。',
+                okText: 'OK',
               });
             } else {
               storage.authenticateUser(response.token);
@@ -45,7 +44,6 @@ class SLogin extends React.Component {
             }
           }
         });
-        console.log('Received values of form: ', values);
       } else {
         console.log(err);
       }

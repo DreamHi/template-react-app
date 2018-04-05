@@ -23,6 +23,6 @@ export default class Helper {
   }
 
   static formattedNumber(number) {
-    return ( "" + number ).replace( /(\d)(?=(\d{3})+\b)/g, "$1," ) ;
+    return ('' + number).replace( /(\d)(?=(\d{3})+\b)/g, '$1,' ) ;
   }
 }

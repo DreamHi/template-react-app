@@ -1,7 +1,6 @@
 import sjcl from 'sjcl';
 
 class Storage {
-
   static authenticateUser(token) {
     localStorage.setItem('token', token);
   }
@@ -37,7 +36,6 @@ class Storage {
   static delUser() {
     localStorage.removeItem('user');
   }
-
 }
 
 export default Storage;

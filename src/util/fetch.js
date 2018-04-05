@@ -1,18 +1,17 @@
 import fetch from 'axios';
-import createHistory from "history/createBrowserHistory";
+import createHistory from 'history/createBrowserHistory';
 import { ROUTE_LOGIN } from './constants';
 import storage from './storage';
 
-const history = createHistory({forceRefresh: true});
+const history = createHistory({ forceRefresh: true });
 fetch.defaults.baseURL = `${process.env.API_URL}`;
 
 function setHeaderToken() {
   const token = storage.getToken();
-  return { "x-token-template": `${token}` };
+  return { 'x-token-template': `${token}` };
 }
 
 function checkAuth(err, callback) {
-  console.log(err);
   if (err.response.data.errorCode === 401) {
     storage.removeAuthenticateUser();
     history.push(ROUTE_LOGIN);
@@ -21,7 +20,6 @@ function checkAuth(err, callback) {
 }
 
 export function get(url, obj = {}, callback) {
-
   const options = {
     params: obj,
     headers: setHeaderToken(),
@@ -36,7 +34,6 @@ export function get(url, obj = {}, callback) {
 }
 
 export function post(url, data = {}, callback) {
-
   const options = {
     headers: setHeaderToken(),
   };
@@ -52,11 +49,9 @@ export function post(url, data = {}, callback) {
 }
 
 export function put(url, obj = {}, callback) {
-
   const options = {
     headers: setHeaderToken(),
   };
-
   options.headers['Content-Type'] = 'application/json';
   fetch.put(url, obj, options)
     .then((response) => {
@@ -68,7 +63,6 @@ export function put(url, obj = {}, callback) {
 }
 
 export function remove(url, callback) {
-
   const options = {
     headers: setHeaderToken(),
   };
@@ -83,7 +77,6 @@ export function remove(url, callback) {
 }
 
 export function upload(url, obj = {}, callback) {
-
   const options = {
     headers: {
       'Content-Type': obj.type,
@@ -100,7 +93,6 @@ export function upload(url, obj = {}, callback) {
 }
 
 export function pdfOutput(url, name = 'report', data) {
-
   fetch({
     method: 'post',
     url,
@@ -109,7 +101,7 @@ export function pdfOutput(url, name = 'report', data) {
     headers: setHeaderToken(),
   })
     .then((response) => {
-      const blob = new Blob([response.data], { type: 'application/pdf' } );
+      const blob = new Blob([response.data], { type: 'application/pdf' });
       const link = document.createElement('a');
       link.href = window.URL.createObjectURL(blob);
       link.download = `${name}.pdf`;
@@ -118,7 +110,6 @@ export function pdfOutput(url, name = 'report', data) {
 }
 
 export function zipOutput(url, data, callback) {
-
   fetch({
     method: 'post',
     url,
