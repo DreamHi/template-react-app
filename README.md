@@ -28,13 +28,14 @@ npm run build 打包模式
       return { "x-token-template": `${token}` };
     }
     ```
-3.5 修改src/static/html/template.html中的title
-3.6 置换src/static/img/favicon.ico
-4. 可以开发功能了！
+3.5 修改src/static/html/template.html中的title  
+3.6 置换src/static/img/favicon.ico  
+4.可以开发功能了！  
     ```shell
     npm install webpack-cli -D
     ```
-4.1 开发模式
+    
+4.1 开发模式  
 ```shell
 // 配置环境变量
 // 默认值： 'http://127.0.0.1:3000'
@@ -43,14 +44,14 @@ export API_URL=xxxxx
 npm run start
 ```
     
-4.2 打包模式
+4.2 打包模式  
 ```shell
 // 配置环境变量
 // 默认值： 'http://127.0.0.1:3000'
 npm run build
 ``` 
 
-5.测试
+5.测试  
 
 ## 用户指南
 
