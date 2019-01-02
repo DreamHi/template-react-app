@@ -1,8 +1,9 @@
 scripts
 node_modules
-coverage
+test/coverage
+test/setup
+config
 docs
 dist
 lib
-webpack.config.dev.js
-webpack.config.prod.js
+src/static/img

@@ -1,0 +1,53 @@
+html,
+body {
+  height: 100%;
+  font-size: 14px;
+  font-family: sans-serif;
+  border-top: 2px solid #263147;
+  color: #333;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: sans-serif;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  display: block;
+  height: 50px;
+  background-color: #263147;
+  padding-left: 24px;
+  padding-right: 0;
+}
+
+.nav h2 {
+  color: white;
+  line-height: 50px;
+}
+
+.nav .name {
+  line-height: 50px;
+  padding-right: 10px;
+  color: white;
+  text-align: right;
+  font-size: 16px;
+}
+
+.nav .name a,
+.nav .name a i {
+  color: white;
+}
