@@ -1,9 +1,7 @@
-scripts
-node_modules
-test/coverage
-test/setup
-config
-docs
-dist
-lib
-src/static/img
+/build/**
+/coverage/**
+/ci/**
+/node_modules/**
+/src/**/*.test.js
+config-overrides.js
+/src/setupTests.js

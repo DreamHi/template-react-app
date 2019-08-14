@@ -1,25 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import { Layout } from 'antd';
 
 import CNav from './CNav';
 
 const { Header, Content } = Layout;
 
-class CDefaultLayout extends React.Component {
-  render() {
-    return (
+const CDefaultLayout = props => {
+  return (
+    <Layout>
+      <Header>
+        <CNav />
+      </Header>
       <Layout>
-        <Header>
-          <CNav />
-        </Header>
-        <Layout>
-          <Content>{this.props.children}</Content>
-        </Layout>
+        <Content>{props.children}</Content>
       </Layout>
-    );
-  }
-}
+    </Layout>
+  );
+};
 
 CDefaultLayout.defaultProps = {
   children: null,

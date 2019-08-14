@@ -1,72 +1,54 @@
 import fetch from 'axios';
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory as createHistory } from 'history';
 
 import { ROUTE_ERROR } from './constants';
-import storage from './storage';
+import Storage from './storage';
 
 const history = createHistory({ forceRefresh: true });
-fetch.defaults.baseURL = `${process.env.API_URL}`;
+fetch.defaults.baseURL = `${process.env.REACT_APP_API_URL}`;
 
 const setHeaderToken = () => {
-  const token = storage.getToken();
+  const token = Storage.getToken();
   return { 'x-token-template': `${token}` };
 };
 
-const commonRequest = (options, callback) => {
-  fetch(options)
-    .then(response => {
-      callback(undefined, response.data.data);
-    })
-    .catch(err => {
+const commonRequest = async (method, url, arr) => {
+  const options = {
+    headers: setHeaderToken(),
+    method,
+    url,
+    ...arr,
+  };
+
+  try {
+    const response = await fetch(options);
+    return response.data.data;
+  } catch (err) {
+    if (err && err.response) {
       if (err.response.data.errorCode === 401 || err.response.data.errorCode === 500) {
-        storage.clearLocalStorage();
+        Storage.clearLocalStorage();
         history.push(ROUTE_ERROR, err.response.data);
-      } else {
-        callback(err.response.data, undefined);
+        return null;
       }
-    });
+      throw new Error(err.response.data.errorMessage);
+    } else {
+      throw new Error('不能连接服务器。');
+    }
+  }
 };
 
-export function get(url, obj = {}, callback) {
-  const options = {
-    params: obj,
-    headers: setHeaderToken(),
-    method: 'get',
-    url,
-  };
-
-  commonRequest(options, callback);
+export function get(url, params = {}) {
+  return commonRequest('get', url, { params });
 }
 
-export function post(url, data = {}, callback) {
-  const options = {
-    headers: setHeaderToken(),
-    method: 'post',
-    url,
-    data,
-  };
-
-  commonRequest(options, callback);
+export function post(url, data = {}) {
+  return commonRequest('post', url, { data });
 }
 
-export function put(url, data = {}, callback) {
-  const options = {
-    headers: setHeaderToken(),
-    method: 'put',
-    url,
-    data,
-  };
-
-  commonRequest(options, callback);
+export function put(url, data = {}) {
+  return commonRequest('put', url, { data });
 }
 
-export function del(url, data = {}, callback) {
-  const options = {
-    headers: setHeaderToken(),
-    method: 'delete',
-    url,
-    data,
-  };
-
-  commonRequest(options, callback);
+export function del(url, data = {}) {
+  return commonRequest('delete', url, { data });
 }

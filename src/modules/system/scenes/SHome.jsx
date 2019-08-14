@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default class SHome extends React.Component {
-  render() {
-    return <h1>Home</h1>;
-  }
-}
+const SHome = () => {
+  return <h1>Home</h1>;
+};
+
+export default SHome;

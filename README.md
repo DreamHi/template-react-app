@@ -119,8 +119,6 @@ template-react-app/
 │       ├── helper.js
 │       └── storage.js
 ├── test
-├── webpack.config.dev.js
-└── webpack.config.prod.js
 ```
 
 主要由三个文件夹构成
